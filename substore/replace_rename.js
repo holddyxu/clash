@@ -20,22 +20,24 @@ function operator(proxies = [], targetPlatform, context) {
       if (proxy.name.includes("中转加速") || proxy.name.includes("Claw 中转")) {
         // 修改 server 字段
         if (proxy.server) {
-          proxy.server = "relay.example.com";
+          proxy.server = "relayhk.example.com";
         }
 
         // 删除 "中转加速" 或 "Claw 中转"
         proxy.name = proxy.name.replace("中转加速", "").replace("Claw 中转", "").trim();
 
-        // 在节点最前面添加 "🚀" emoji
-        proxy.name = "🚀 " + proxy.name;
+        // 在节点名称最后面添加 "🚀" emoji
+        proxy.name = proxy.name + " 🚀";
       }
 
-      // 如果节点名称包含 "JP加速"：
-      if (proxy.name.includes("JP加速")) {
+      // 如果节点名称包含 "Claw加速"：
+      if (proxy.name.includes("Claw加速")) {
         // 修改 server 字段
         if (proxy.server) {
-          proxy.server = "relayjapan.example.com";
+          proxy.server = "relayjp.example.com";
         }
+        // 在节点名称最后面添加 "🚀" emoji
+        proxy.name = proxy.name + " 🚀";
       }
 
       // 将处理后的节点放入不同的数组
