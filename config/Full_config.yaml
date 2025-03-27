@@ -1,26 +1,10 @@
 proxy-groups:
-  - name: 中转加速
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
-    include-all: true
-    filter: (?i)🚀
-    type: url-test
-    interval: 300
-    tolerance: 50
-
-  - name: 直联节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    include-all: true
-    filter: (?i)直联
-    type: url-test
-    interval: 300
-    tolerance: 50
-
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
     proxies:
       - 中转加速
-      - 直联节点
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -30,21 +14,21 @@ proxy-groups:
       - 美洲节点
       - 澳洲节点
       - 其他节点
-      - 手动切换
+      - 手动切换 
       - DIRECT
-
+      
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     type: select
-
+    
   - name: 电报消息
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
       - 节点选择
       - 中转加速
-      - 直联节点
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -54,8 +38,8 @@ proxy-groups:
       - 美洲节点
       - 澳洲节点
       - 其他节点
-      - 手动切换
-
+      - 手动切换 
+      
   - name: OpenAI
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
@@ -70,17 +54,17 @@ proxy-groups:
       - 其他节点
       - 节点选择
       - 中转加速
-      - 直联节点
-      - 香港节点
-      - 手动切换
-
+      - 直联节点    
+      - 香港节点      
+      - 手动切换 
+      
   - name: 油管视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
       - 节点选择
       - 中转加速
-      - 直联节点
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -90,100 +74,15 @@ proxy-groups:
       - 美洲节点
       - 澳洲节点
       - 其他节点
-      - 手动切换
-
-  - name: 微软服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 中转加速
-      - 直联节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
-      - 其他节点
-      - 手动切换
-
-  - name: 苹果服务
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 中转加速
-      - 直联节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
-      - 其他节点
-      - 手动切换
-
-  - name: 游戏平台
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-      - 中转加速
-      - 直联节点
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
-      - 其他节点
-      - 手动切换
-
-  - name: 全球直连
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-
-  - name: 广告拦截
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-
-  - name: 应用净化
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-
-  - name: 漏网之鱼
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
-    type: select
-    proxies:
-      - DIRECT
-      - 节点选择
-
+      - 手动切换 
+      
   - name: 奈飞视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     type: select
     proxies:
       - 节点选择
       - 中转加速
-      - 直联节点
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -193,8 +92,8 @@ proxy-groups:
       - 美洲节点
       - 澳洲节点
       - 其他节点
-      - 手动切换
-
+      - 手动切换 
+      
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
@@ -203,7 +102,7 @@ proxy-groups:
       - 节点选择
       - 手动切换
       - DIRECT
-
+      
   - name: 哔哩哔哩
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
     type: select
@@ -211,7 +110,7 @@ proxy-groups:
       - 全球直连
       - 台湾节点
       - 香港节点
-
+      
   - name: 国外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
@@ -219,7 +118,7 @@ proxy-groups:
       - 节点选择
       - 手动切换
       - DIRECT
-
+      
   - name: 国内媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
     type: select
@@ -230,7 +129,7 @@ proxy-groups:
       - 狮城节点
       - 日本节点
       - 手动切换
-
+      
   - name: 谷歌FCM
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
     type: select
@@ -238,7 +137,7 @@ proxy-groups:
       - DIRECT
       - 节点选择
       - 中转加速
-      - 直联节点
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -257,7 +156,45 @@ proxy-groups:
       - DIRECT
       - 节点选择
       - 中转加速
-      - 直联节点
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换
+      
+  - name: 微软服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换
+      
+  - name: 苹果服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
       - 香港节点
       - 台湾节点
       - 狮城节点
@@ -269,6 +206,69 @@ proxy-groups:
       - 其他节点
       - 手动切换
 
+  - name: 游戏平台
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换  
+      
+  - name: 全球直连
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      
+  - name: 广告拦截
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      
+  - name: 应用净化
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      
+  - name: 漏网之鱼
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择      
+      
+  - name: 中转加速
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
+    include-all: true
+    filter: (?i)🚀
+    type: url-test
+    interval: 300
+    tolerance: 50
+    
+  - name: 直联节点 
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    include-all: true
+    filter: (?i)直联 
+    type: url-test
+    interval: 300
+    tolerance: 50
+    
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
@@ -299,7 +299,7 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
-
+    
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
@@ -307,8 +307,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
-
-  - name: 美洲节点
+    
+  - name: 美洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/America_Map.png
     include-all: true
     filter: (?i)南美|阿根廷|布宜诺斯艾利斯|巴西|圣保罗|里约|智利|圣地亚哥|秘鲁|利马|AG|BZ|CH|哥伦比亚|波哥大|加拿大|CA|温哥华|巴拉圭|委内瑞拉
@@ -316,7 +316,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
 
-  - name: 欧洲节点
+  - name: 欧洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
     include-all: true
     filter: (?i)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列
@@ -324,13 +324,14 @@ proxy-groups:
     interval: 300
     tolerance: 50
 
-  - name: 澳洲节点
+  - name: 澳洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Australia.png
     include-all: true
     filter: (?i)澳洲|澳大利亚|悉尼|墨尔本|布里斯班|新西兰|奥克兰|惠灵顿|AU|NZ|柏斯
     type: url-test
     interval: 300
     tolerance: 50
+
 
   - name: 其他节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
@@ -339,6 +340,7 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+
 
 rule-providers:
   LocalAreaNetwork:
@@ -425,27 +427,31 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+    
   Copilot:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Copilot/Copilot.list
     path: ./ruleset/Copilot.listt
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http   
+
   Claude:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Claude/Claude.list
     path: ./ruleset/Claude.list
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http  
+
   Gemini:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Gemini/Gemini.list
     path: ./ruleset/Gemini.list
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http  
+
   Epic:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Epic/Epic.list
     path: ./ruleset/Epic.list
@@ -544,7 +550,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-
+    
   ChinaMax_IP:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMax/ChinaMax_IP.yaml
     path: ./ruleset/ChinaMax_IP.yaml
@@ -572,31 +578,35 @@ rule-providers:
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http  
+    
+
   ImgHostAbroad:
     url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/ImgHostAbroad/ImgHostAbroad.list
-    path: ./ruleset/ImgHostAbroad.list
+    path: ./ruleset/ImgHostAbroad.list 
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http   
+  
   Developer:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Developer/Developer.list
     path: ./ruleset/Developer.list
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http    
+    
   CiciAI:
     url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/Ruleset/CiciAi.list
     path: ./ruleset/PirateTrackers.list
     behavior: classical
     interval: 86400
     format: text
-    type: http
+    type: http 
 
 rules:
-  - "RULE-SET,LocalAreaNetwork,DIRECT"
+  - "RULE-SET,LocalAreaNetwork,全球直连"
   - "RULE-SET,UnBan,全球直连"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
@@ -607,10 +617,10 @@ rules:
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,Telegram,电报消息"
-  - "RULE-SET,OpenAi,OpenAi"
-  - "RULE-SET,Copilot,OpenAi"
-  - "RULE-SET,Claude,美国节点"
-  - "RULE-SET,Gemini,OpenAi"
+  - "RULE-SET,OpenAI,OpenAI"
+  - "RULE-SET,Copilot,OpenAI"  
+  - "RULE-SET,Claude,美国节点"  
+  - "RULE-SET,Gemini,OpenAI"  
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
   - "RULE-SET,Sony,游戏平台"
