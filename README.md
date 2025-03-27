@@ -1,2 +1,4 @@
-# clash
-根据互联网上的clash规则，整合一份自用的规则
+基于ACL4SSR 修改的 Clash 规则个人使用，
+核心分流 OpenAI、Bing 等AI应用快速切换节点。
+添加PT规则
+项目基于CC-BY-SA-4.0协议发布
