@@ -1,4 +1,19 @@
 proxy-groups:
+  - name: 中转加速
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
+    include-all: true
+    filter: (?i)🚀
+    type: url-test
+    interval: 300
+    tolerance: 50
+    
+  - name: 直联节点 
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    include-all: true
+    filter: (?i)直联 
+    type: url-test
+    interval: 300
+    tolerance: 50
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
@@ -252,22 +267,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - 节点选择      
-      
-  - name: 中转加速
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
-    include-all: true
-    filter: (?i)🚀
-    type: url-test
-    interval: 300
-    tolerance: 50
-    
-  - name: 直联节点 
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    include-all: true
-    filter: (?i)直联 
-    type: url-test
-    interval: 300
-    tolerance: 50
     
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
@@ -427,7 +426,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-    
+
   Copilot:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Copilot/Copilot.list
     path: ./ruleset/Copilot.listt
@@ -630,14 +629,11 @@ rules:
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BilibiliHMT,哔哩哔哩"
-  - "RULE-SET,Bilibili,哔哩哔哩"
-  - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,ChinaMax,全球直连"
   - "RULE-SET,ChinaMax_Domain,全球直连"
   - "RULE-SET,ChinaMax_IP,全球直连"
-  - "RULE-SET,ChinaCompanyIp,全球直连"
   - "RULE-SET,Download,全球直连"
   - "GEOIP,CN,全球直连"
   - "MATCH,漏网之鱼,全球直连"
