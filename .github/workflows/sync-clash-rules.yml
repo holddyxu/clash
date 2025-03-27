@@ -1,0 +1,33 @@
+name: Sync Clash Rules
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 时间 0 点执行，对应北京时间早上 8 点
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  sync_rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main # 确保检出到您的默认分支
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Download Clash Rules
+        run: |
+          mkdir -p list
+          git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git temp_repo
+          cp -r temp_repo/rule/Clash/* list/
+          rm -rf temp_repo
+
+      - name: Commit and Push Changes
+        run: |
+          git add list/
+          git commit -m "Sync Clash rules from upstream" || echo "No changes to commit"
+          git push origin main # 替换为您的默认分支名称（通常是 main 或 master）
