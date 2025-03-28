@@ -613,16 +613,15 @@ rule-providers:
     type: http 
     
   Github:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Github/Github.list
     path: ./ruleset/Github.list
     behavior: classical
     interval: 86400
     format: text
     type: http 
     
-   YoutubeMusic:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YoutubeMusic/YoutubeMusic.list
-    path: ./ruleset/YoutubeMusic.list
+   YouTubeMusic:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YouTubeMusic/YouTubeMusic.list
+    path: ./ruleset/YouTubeMusic.list
     behavior: classical
     interval: 86400
     format: text
