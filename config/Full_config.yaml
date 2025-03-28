@@ -90,7 +90,25 @@ proxy-groups:
       - 澳洲节点
       - 其他节点
       - 手动切换 
-      
+
+  - name: 谷歌
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    type: select
+    proxies:
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换
+      - DIRECT
+      - 节点选择       
   - name: 奈飞视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     type: select
@@ -143,26 +161,7 @@ proxy-groups:
       - 台湾节点
       - 狮城节点
       - 日本节点
-      - 手动切换
-      
-  - name: 谷歌
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
-    type: select
-    proxies:
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
-      - 日本节点
-      - 美国节点
-      - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
-      - 其他节点
-      - 手动切换
-      - DIRECT
-      - 节点选择   
+      - 手动切换  
 
   - name: 微软云盘
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
@@ -612,7 +611,8 @@ rule-providers:
     format: text
     type: http 
     
-  Github:
+  GitHub:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GitHub/GitHub.list
     path: ./ruleset/Github.list
     behavior: classical
     interval: 86400
@@ -643,7 +643,7 @@ rule-providers:
     format: text
     type: http 
 
-    TalkToneNoAds:
+  TalkToneNoAds:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds.list
     path: ./ruleset/TalkToneNoAds.list
     behavior: classical
@@ -690,7 +690,7 @@ rules:
   - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,Developer,Developer"
-  - "RULE-SET,Github,Developer"  
+  - "RULE-SET,GitHub,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
   - "MATCH,漏网之鱼,全球直连"
