@@ -261,12 +261,16 @@ proxy-groups:
       - REJECT
       - DIRECT
       
-  - name: 漏网之鱼
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+  - name: Developer
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
     type: select
     proxies:
-      - DIRECT
-      - 节点选择      
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点
+      - 其他节点
+      - 手动切换      
     
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
@@ -283,6 +287,7 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+    
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
@@ -340,6 +345,16 @@ proxy-groups:
     interval: 300
     tolerance: 50
 
+  - name: 漏网之鱼
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择  
+      - 中转加速
+      - 直联节点    
+      - 其他节点
+      - 手动切换
 
 rule-providers:
   LocalAreaNetwork:
@@ -603,6 +618,15 @@ rule-providers:
     interval: 86400
     format: text
     type: http 
+    
+  Github:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Github/Github.list
+    path: ./ruleset/Github.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http 
+    
 
 rules:
   - "RULE-SET,LocalAreaNetwork,全球直连"
@@ -610,7 +634,7 @@ rules:
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
   - "RULE-SET,GoogleFCM,谷歌FCM"
-  - "RULE-SET,GoogleCN,全球直连"
+  - "RULE-SET,GoogleCN,谷歌FCM"
   - "RULE-SET,SteamCN,全球直连"
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
@@ -636,10 +660,10 @@ rules:
   - "RULE-SET,ChinaMax_IP,全球直连"
   - "RULE-SET,Download,全球直连"
   - "GEOIP,CN,全球直连"
-  - "MATCH,漏网之鱼,全球直连"
   - "RULE-SET,CiciAI,全球直连"
-  - "RULE-SET,Developer,节点选择"
-  - "RULE-SET,Developer,节点选择"
+  - "RULE-SET,Developer,Developer"
+  - "RULE-SET,Github,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
   - "RULE-SET,PirateTrackers,全球直连"
+  - "MATCH,漏网之鱼,全球直连"
