@@ -635,6 +635,22 @@ rule-providers:
     format: text
     type: http 
 
+  TalkTone:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkTone/TalkTone.list
+    path: ./ruleset/TalkTone.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http 
+
+    TalkToneNoAds:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds.list
+    path: ./ruleset/TalkToneNoAds.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
 rules:
   - "RULE-SET,LocalAreaNetwork,全球直连"
   - "RULE-SET,PirateTrackers,全球直连"
@@ -648,6 +664,7 @@ rules:
   - "GEOIP,CN,全球直连"
   - "RULE-SET,CiciAI,全球直连"
   - "RULE-SET,BanAD,广告拦截"
+  - "RULE-SET,TalkToneNoAds,应用净化"  
   - "RULE-SET,BanProgramAD,应用净化"
   - "RULE-SET,Google,谷歌"
   - "RULE-SET,GoogleFCM,谷歌"
@@ -658,7 +675,8 @@ rules:
   - "RULE-SET,OpenAI,OpenAI"
   - "RULE-SET,Copilot,OpenAI"   
   - "RULE-SET,Gemini,OpenAI"  
-  - "RULE-SET,Claude,美国节点"   
+  - "RULE-SET,Claude,美国节点"
+  - "RULE-SET,TalkTone,美国节点"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
   - "RULE-SET,Sony,游戏平台"
