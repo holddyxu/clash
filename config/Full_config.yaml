@@ -619,29 +619,46 @@ rule-providers:
     format: text
     type: http 
     
-   YouTubeMusic:
+  YouTubeMusic:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YouTubeMusic/YouTubeMusic.list
     path: ./ruleset/YouTubeMusic.list
     behavior: classical
     interval: 86400
     format: text
-    type: http     
+    type: http   
+
+  GoogleFCM:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GoogleFCM/GoogleFCM.list
+    path: ./ruleset/GoogleFCM.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http 
 
 rules:
   - "RULE-SET,LocalAreaNetwork,全球直连"
+  - "RULE-SET,PirateTrackers,全球直连"
+  - "RULE-SET,SteamCN,全球直连"
+  - "RULE-SET,ChinaMedia,国内媒体"
+  - "RULE-SET,ChinaMax,全球直连"
+  - "RULE-SET,ChinaMax_Domain,全球直连"
+  - "RULE-SET,ChinaMax_IP,全球直连"
   - "RULE-SET,UnBan,全球直连"
+  - "RULE-SET,Download,全球直连"
+  - "GEOIP,CN,全球直连"
+  - "RULE-SET,CiciAI,全球直连"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
   - "RULE-SET,Google,谷歌"
-  - "RULE-SET,SteamCN,全球直连"
+  - "RULE-SET,GoogleFCM,谷歌"
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,Telegram,电报消息"
   - "RULE-SET,OpenAI,OpenAI"
-  - "RULE-SET,Copilot,OpenAI"  
-  - "RULE-SET,Claude,美国节点"  
+  - "RULE-SET,Copilot,OpenAI"   
   - "RULE-SET,Gemini,OpenAI"  
+  - "RULE-SET,Claude,美国节点"   
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
   - "RULE-SET,Sony,游戏平台"
@@ -654,15 +671,8 @@ rules:
   - "RULE-SET,BilibiliHMT,哔哩哔哩"
   - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,ProxyGFWlist,节点选择"
-  - "RULE-SET,ChinaMax,全球直连"
-  - "RULE-SET,ChinaMax_Domain,全球直连"
-  - "RULE-SET,ChinaMax_IP,全球直连"
-  - "RULE-SET,Download,全球直连"
-  - "GEOIP,CN,全球直连"
-  - "RULE-SET,CiciAI,全球直连"
   - "RULE-SET,Developer,Developer"
   - "RULE-SET,Github,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
-  - "RULE-SET,PirateTrackers,全球直连"
   - "MATCH,漏网之鱼,全球直连"
