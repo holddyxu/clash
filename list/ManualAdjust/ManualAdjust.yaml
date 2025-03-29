@@ -1,5 +1,5 @@
 #纯自用,漏网之鱼
 
 payload:
-    - DOMAIN-SUFFIX,nodeseek.com
-    - DOMAIN-SUFFIX,hostloc.com
+  - DOMAIN-SUFFIX,nodeseek.com
+  - DOMAIN-SUFFIX,hostloc.com
