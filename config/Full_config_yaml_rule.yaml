@@ -3,18 +3,15 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
     include-all: true
     filter: (?i)🚀
+    type: select
+    
+  - name: 节点选择
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
-    
-  - name: 节点选择
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
-    type: select
     proxies:
-      - 中转加速
-      - 直联节点    
-      - 香港节点
       - 台湾节点
       - 狮城节点
       - 日本节点
@@ -22,9 +19,7 @@ proxy-groups:
       - 欧洲节点
       - 美洲节点
       - 澳洲节点
-      - 其他节点
-      - 手动切换 
-      - DIRECT
+      - 其他节点  
       
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
@@ -258,7 +253,7 @@ proxy-groups:
       - 澳洲节点
       - 其他节点
       - 手动切换    
-      
+
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
