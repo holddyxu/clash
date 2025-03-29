@@ -615,6 +615,12 @@ rule-providers:
     behavior: classical
     interval: 86400
     type: http  
+  ManualAjust:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ManualAjust/ManualAjust.yaml
+    path: ./ruleset/ManualAjust.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
 
 rules:
 
@@ -656,3 +662,4 @@ rules:
   - "RULE-SET,GitHub,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
+  - "RULE-SET,ManualAjust,节点选择"
