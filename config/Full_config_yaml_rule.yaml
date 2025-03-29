@@ -515,7 +515,7 @@ rule-providers:
   ProxyGFWDomain:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Proxy/Proxy_Domain.yaml
     path: ./ruleset/ProxyGFW_Domain.yaml
-    behavior: classical
+    behavior: domain
     interval: 86400
     type: http
 
@@ -560,7 +560,7 @@ rule-providers:
     
 
   ImgHostAbroad:
-    url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/ImgHostAbroad/ImgHostAbroad.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ImgHostAbroad/ImgHostAbroad.yaml
     path: ./ruleset/ImgHostAbroad.yaml 
     behavior: classical
     interval: 86400
@@ -624,9 +624,9 @@ rule-providers:
 rules:
 
   - "RULE-SET,ChinaMedia,国内媒体"
-  - "RULE-SET,ChinaMax_Domain,全球直连"
+  - "RULE-SET,ChinaMaxDomain,全球直连"
   - "RULE-SET,ChinaMax,全球直连"  
-  - "RULE-SET,ChinaMax_IP,全球直连"
+  - "RULE-SET,ChinaMaxIP,全球直连"
   - "RULE-SET,Download,全球直连"
   - "RULE-SET,PirateTrackers,全球直连"
   - "RULE-SET,SteamCN,全球直连"  
@@ -654,7 +654,7 @@ rules:
   - "RULE-SET,YouTubeMusic,美国节点"  
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
-  - "RULE-SET,BilibiliHMT,哔哩哔哩"
+  - "RULE-SET,BiliBiliIntl,哔哩哔哩"
   - "RULE-SET,ProxyGFW,节点选择"
   - "RULE-SET,ProxyGFWDomain,节点选择"
   - "RULE-SET,Developer,Developer"
