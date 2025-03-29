@@ -4,16 +4,10 @@ proxy-groups:
     include-all: true
     filter: (?i)🚀
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
     
-  - name: 直联节点 
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    include-all: true
-    filter: (?i)直联 
-    type: url-test
-    interval: 300
-    tolerance: 50
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
@@ -269,6 +263,7 @@ proxy-groups:
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
 
@@ -277,40 +272,45 @@ proxy-groups:
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
     
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
     filter: (?i)新加坡|坡|狮城|SG|Singapore
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
 
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
     filter: (?i)^(?!.*(落地 HK JP加速|HK JP加速|HKJP加速)).*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan).*$
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
     
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
     
   - name: 美洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/America_Map.png
     include-all: true
     filter: (?i)南美|阿根廷|布宜诺斯艾利斯|巴西|圣保罗|里约|智利|圣地亚哥|秘鲁|利马|AG|BZ|CH|哥伦比亚|波哥大|加拿大|CA|温哥华|巴拉圭|委内瑞拉
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
 
   - name: 欧洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
@@ -318,15 +318,16 @@ proxy-groups:
     filter: (?i)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列
     type: url-test
     interval: 300
-    tolerance: 50
+    tolerance: 100
 
   - name: 澳洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Australia.png
     include-all: true
     filter: (?i)澳洲|澳大利亚|悉尼|墨尔本|布里斯班|新西兰|奥克兰|惠灵顿|AU|NZ|柏斯
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
 
 
   - name: 其他节点
@@ -334,9 +335,19 @@ proxy-groups:
     include-all: true
     filter: ^(?!.*(🚀|直联|港|HK|hk|Hong Kong|HongKong|hongkong)|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|南美|阿根廷|布宜诺斯艾利斯|巴西|圣保罗|里约|智利|圣地亚哥|秘鲁|利马|AG|BZ|CH|哥伦比亚|波哥大|加拿大|CA|温哥华|巴拉圭|委内瑞拉|欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列|澳洲|澳大利亚|悉尼|墨尔本|布里斯班|新西兰|奥克兰|惠灵顿|AU|NZ|柏斯).*$
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 50
+    tolerance: 100
 
+  - name: 直联节点 
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    include-all: true
+    filter: (?i)直联 
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     type: select
