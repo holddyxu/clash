@@ -609,6 +609,13 @@ rule-providers:
     interval: 86400
     type: http
 
+  Check:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Check/Check.yaml
+    path: ./ruleset/Check.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+
 rules:
 
   - "RULE-SET,ChinaMedia,国内媒体"
@@ -632,6 +639,7 @@ rules:
   - "RULE-SET,BardAI,OpenAI"  
   - "RULE-SET,Claude,美国节点"
   - "RULE-SET,TalkTone,美国节点"
+  - "RULE-SET,Check,节点选择"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
   - "RULE-SET,Sony,游戏平台"
