@@ -357,13 +357,13 @@ proxy-groups:
 
 rule-providers:
   Advertising:
-   url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising_Resolve/Advertising_No_Resolve.yaml
+   url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_No_Resolve.yaml
    path: ./ruleset/Advertising_No_Resolve.yaml
    behavior: classical
    interval: 86400
    type: http
   AdvertisingDomain:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising_Domain/Advertising_Domain.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_Domain.yaml
     path: ./ruleset/Advertising_Domain.yaml
     behavior: domain
     interval: 86400
@@ -488,14 +488,14 @@ rule-providers:
     interval: 86400
     type: http
   Bahamut:
-    url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/Ruleset/Bahamut_No_Resolve.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Bahamut/Bahamut_No_Resolve.yaml
     path: ./ruleset/Bahamut_No_Resolve.yaml
     behavior: classical
     interval: 86400
     type: http
-  BilibiliHMT:
-    url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/Ruleset/BilibiliHMT_No_Resolve.yaml
-    path: ./ruleset/BilibiliHMT_No_Resolve.yaml
+  BiliBiliIntl:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/BiliBiliIntl/BiliBiliIntl_No_Resolve.yaml
+    path: ./ruleset/BiliBiliIntl_No_Resolve.yaml
     behavior: classical
     interval: 86400
     type: http
@@ -513,7 +513,7 @@ rule-providers:
     interval: 86400
     type: http
   ProxyGFWDomain:
-    url: https://raw.githubusercontent.com/holddyxu/ClashRuleSet/main/Clash/Proxy/Proxy_Domain.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Proxy/Proxy_Domain.yaml
     path: ./ruleset/ProxyGFW_Domain.yaml
     behavior: classical
     interval: 86400
@@ -525,15 +525,14 @@ rule-providers:
     behavior: classical
     interval: 86400
     type: http
-  ChinaMax_Domain:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMax_Domain.yaml
+  ChinaMaxDomain:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMaxNoMedia_Domain.yaml
     path: ./ruleset/ChinaMaxNoMedia_Domain.yaml
     behavior: domain
     interval: 86400
     type: http
-    
-  ChinaMax_IP:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/CChinaMaxNoMedia/ChinaMaxNoMedia_IP.yaml
+  ChinaMaxIP:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMaxNoMedia_IP.yaml
     path: ./ruleset/ChinaMaxNoMedia_IP.yaml
     behavior: ipcidr
     interval: 86400
@@ -596,14 +595,14 @@ rule-providers:
     type: http 
 
   TalkTone:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkTone/TalkTone.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkTone/TalkTone_No_Resolve.yaml
     path: ./ruleset/TalkTone.yaml
     behavior: classical
     interval: 86400
     type: http 
 
   TalkToneNoAds:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds.yaml
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds_No_Resolve.yaml
     path: ./ruleset/TalkToneNoAds.yaml
     behavior: classical
     interval: 86400
@@ -662,4 +661,4 @@ rules:
   - "RULE-SET,GitHub,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
-  - "RULE-SET,ManualAjust,节点选择"
+  - "RULE-SET,ManualAdjust,节点选择"
