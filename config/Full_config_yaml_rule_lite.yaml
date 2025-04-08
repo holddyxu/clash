@@ -1,0 +1,588 @@
+proxy-groups:
+  - name: 中转加速
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
+    include-all: true
+    filter: (?i)🚀
+    type: select
+    
+  - name: 节点选择
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    proxies:
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 其他节点  
+      
+  - name: 手动切换
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+    
+  - name: OpenAI
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
+    type: select
+    proxies:
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点      
+      - 手动切换 
+      
+  - name: 油管视频
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换 
+
+  - name: 谷歌
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
+    type: select
+    proxies:
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换
+      - DIRECT
+      - 节点选择       
+
+      
+  - name: 微软服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换
+      
+  - name: 苹果服务
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 欧洲节点
+      - 美洲节点
+      - 澳洲节点
+      - 其他节点
+      - 手动切换
+
+  - name: 电报消息
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
+    type: select
+    proxies:
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换 
+      
+  - name: 游戏平台
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换  
+  - name: 奈飞视频
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies:
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换 
+      
+  - name: 巴哈姆特
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+    type: select
+    proxies:
+      - 台湾节点
+      - 节点选择
+      - 手动切换
+      - DIRECT
+      
+  - name: 哔哩哔哩
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    type: select
+    proxies:
+      - 全球直连
+      - 台湾节点
+      - 香港节点
+      
+  - name: 国外媒体
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    type: select
+    proxies:
+      - 节点选择
+      - 手动切换
+      - DIRECT
+      
+  - name: 国内媒体
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    type: select
+    proxies:
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 手动切换  
+      
+  - name: 全球直连
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      
+  - name: 广告拦截
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+            
+  - name: Developer
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
+    type: select
+    proxies:
+      - DIRECT    
+      - 节点选择
+      - 中转加速
+      - 直联节点
+      - 其他节点
+      - 手动切换      
+
+  - name: 微软云盘
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 中转加速
+      - 直联节点    
+      - 香港节点
+      - 台湾节点
+      - 狮城节点
+      - 日本节点
+      - 美国节点
+      - 手动切换    
+
+  - name: 香港节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    include-all: true
+    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+
+  - name: 台湾节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    include-all: true
+    filter: (?i)台|新北|彰化|TW|Taiwan
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    
+  - name: 狮城节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    include-all: true
+    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 日本节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    include-all: true
+    filter: (?i)^(?!.*(落地 HK JP加速|HK JP加速|HKJP加速)).*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan).*$
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    
+  - name: 美国节点
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    include-all: true
+    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 漏网之鱼
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择  
+      - 中转加速
+      - 直联节点    
+      - 其他节点
+      - 手动切换
+
+rule-providers:
+  Advertising:
+   url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_No_Resolve.yaml
+   path: ./ruleset/Advertising_No_Resolve.yaml
+   behavior: classical
+   interval: 86400
+   type: http
+  AdvertisingDomain:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_Domain.yaml
+    path: ./ruleset/Advertising_Domain.yaml
+    behavior: domain
+    interval: 86400
+    type: http   
+
+  Google:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Google/Google_No_Resolve.yaml
+    path: ./ruleset/Google_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  SteamCN:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/SteamCN/SteamCN_No_Resolve.yaml
+    path: ./ruleset/SteamCN_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  OneDrive:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/OneDrive/OneDrive_No_Resolve.yaml
+    path: ./ruleset/OneDrive_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  Microsoft:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Microsoft/Microsoft_No_Resolve.yaml
+    path: ./ruleset/Microsoft_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+
+  Apple:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Apple/Apple_No_Resolve.yaml
+    path: ./ruleset/Apple_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Apple_Domain:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Apple/Apple_Domain.yaml
+    path: ./ruleset/Apple_Domain.yaml
+    behavior: domain
+    interval: 86400
+    type: http    
+
+  Telegram:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Telegram/Telegram_No_Resolve.yaml
+    path: ./ruleset/Telegram_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  OpenAI:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/OpenAI/OpenAI_No_Resolve.yaml
+    path: ./ruleset/OpenAI_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  Copilot:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Copilot/Copilot_No_Resolve.yaml
+    path: ./ruleset/Copilot_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
+
+  Claude:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Claude/Claude_No_Resolve.yaml
+    path: ./ruleset/Claude_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+
+  BardAI:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/BardAI/BardAI_No_Resolve.yaml
+    path: ./ruleset/BardAI_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+
+  Epic:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Epic/Epic_No_Resolve.yaml
+    path: ./ruleset/Epic_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Origin:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Origin/Origin_No_Resolve.yaml
+    path: ./ruleset/Origin_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Sony:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Sony/Sony_No_Resolve.yaml
+    path: ./ruleset/Sony_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Steam:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Steam/Steam_No_Resolve.yaml
+    path: ./ruleset/Steam_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Nintendo:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nintendo/Nintendo_No_Resolve.yaml
+    path: ./ruleset/Nintendo_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  YouTube:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YouTube/YouTube_No_Resolve.yaml
+    path: ./ruleset/YouTube_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Netflix:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Netflix/Netflix_No_Resolve.yaml
+    path: ./ruleset/Netflix_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  Bahamut:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Bahamut/Bahamut_No_Resolve.yaml
+    path: ./ruleset/Bahamut_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  BiliBiliIntl:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/BiliBiliIntl/BiliBiliIntl_No_Resolve.yaml
+    path: ./ruleset/BiliBiliIntl_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  ChinaMedia:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMedia/ChinaMedia_No_Resolve.yaml
+    path: ./ruleset/ChinaMedia_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  ProxyGFW:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Proxy/Proxy_No_Resolve.yaml
+    path: ./ruleset/Proxy_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  ProxyGFWDomain:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Proxy/Proxy_Domain.yaml
+    path: ./ruleset/ProxyGFW_Domain.yaml
+    behavior: domain
+    interval: 86400
+    type: http
+
+  ChinaMax:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMaxNoMedia_No_Resolve.yaml
+    path: ./ruleset/ChinaMaxNoMedia_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  ChinaMaxDomain:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMaxNoMedia_Domain.yaml
+    path: ./ruleset/ChinaMaxNoMedia_Domain.yaml
+    behavior: domain
+    interval: 86400
+    type: http
+  ChinaMaxIP:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ChinaMaxNoMedia/ChinaMaxNoMedia_IP.yaml
+    path: ./ruleset/ChinaMaxNoMedia_IP.yaml
+    behavior: ipcidr
+    interval: 86400
+    type: http
+
+  Download:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Download/Download_No_Resolve.yaml
+    path: ./ruleset/Download_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+  PirateTrackers:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/PrivateTracker/PrivateTracker_No_Resolve.yaml
+    path: ./ruleset/PirateTrackers_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  JAV:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/JAV/JAV.yaml
+    path: ./ruleset/JAV.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+    
+
+  ImgHostAbroad:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ImgHostAbroad/ImgHostAbroad.yaml
+    path: ./ruleset/ImgHostAbroad.yaml 
+    behavior: classical
+    interval: 86400
+    type: http   
+  
+  Developer:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Developer/Developer_No_Resolve.yaml
+    path: ./ruleset/Developer_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http    
+    
+  GitHub:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GitHub/GitHub_No_Resolve.yaml
+    path: ./ruleset/GitHub_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http 
+    
+  YouTubeMusic:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YouTubeMusic/YouTubeMusic_No_Resolve.yaml
+    path: ./ruleset/YouTubeMusic_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
+
+  GoogleFCM:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GoogleFCM/GoogleFCM_No_Resolve.yaml
+    path: ./ruleset/GoogleFCM.yaml
+    behavior: classical
+    interval: 86400
+    type: http 
+
+  TalkTone:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkTone/TalkTone_No_Resolve.yaml
+    path: ./ruleset/TalkTone.yaml
+    behavior: classical
+    interval: 86400
+    type: http 
+
+  TalkToneNoAds:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds_No_Resolve.yaml
+    path: ./ruleset/TalkToneNoAds.yaml
+    behavior: classical
+    interval: 86400
+    type: http
+
+  Check:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Check/Check.yaml
+    path: ./ruleset/Check.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
+  ManualAdjust:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ManualAdjust/ManualAdjust.yaml
+    path: ./ruleset/ManualAdjust.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
+
+rules:
+
+  - "RULE-SET,ChinaMedia,国内媒体"
+  - "RULE-SET,ChinaMaxDomain,全球直连"
+  - "RULE-SET,ChinaMax,全球直连"  
+  - "RULE-SET,ChinaMaxIP,全球直连"
+  - "RULE-SET,Download,全球直连"
+  - "RULE-SET,PirateTrackers,全球直连"
+  - "RULE-SET,SteamCN,全球直连"  
+  - "RULE-SET,AdvertisingDomain,广告拦截"
+  - "RULE-SET,Advertising,广告拦截"
+  - "RULE-SET,TalkToneNoAds,广告拦截"  
+  - "RULE-SET,Google,谷歌"
+  - "RULE-SET,GoogleFCM,谷歌"
+  - "RULE-SET,OneDrive,微软云盘"
+  - "RULE-SET,Microsoft,微软服务"
+  - "RULE-SET,Apple,苹果服务"
+  - "RULE-SET,Telegram,电报消息"
+  - "RULE-SET,OpenAI,OpenAI"
+  - "RULE-SET,Copilot,OpenAI"   
+  - "RULE-SET,BardAI,OpenAI"  
+  - "RULE-SET,Claude,美国节点"
+  - "RULE-SET,TalkTone,美国节点"
+  - "RULE-SET,Check,节点选择"
+  - "RULE-SET,Epic,游戏平台"
+  - "RULE-SET,Origin,游戏平台"
+  - "RULE-SET,Sony,游戏平台"
+  - "RULE-SET,Steam,游戏平台"
+  - "RULE-SET,Nintendo,游戏平台"
+  - "RULE-SET,YouTube,油管视频"
+  - "RULE-SET,YouTubeMusic,美国节点"  
+  - "RULE-SET,Netflix,奈飞视频"
+  - "RULE-SET,Bahamut,巴哈姆特"
+  - "RULE-SET,BiliBiliIntl,哔哩哔哩"
+  - "RULE-SET,ProxyGFW,节点选择"
+  - "RULE-SET,ProxyGFWDomain,节点选择"
+  - "RULE-SET,Developer,Developer"
+  - "RULE-SET,GitHub,Developer"  
+  - "RULE-SET,ImgHostAbroad,节点选择"
+  - "RULE-SET,JAV,日本节点"
+  - "RULE-SET,ManualAdjust,节点选择"
