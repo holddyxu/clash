@@ -1,14 +1,14 @@
 # NAME: Global
 # AUTHOR: blackmatrix7
 # REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-03-29 02:13:22
+# UPDATED: 2025-04-06 02:12:19
 # DOMAIN: 87
 # DOMAIN-KEYWORD: 36
-# DOMAIN-SUFFIX: 31163
+# DOMAIN-SUFFIX: 31170
 # IP-CIDR: 112
 # IP-CIDR6: 4
 # PROCESS-NAME: 1
-# TOTAL: 31403
+# TOTAL: 31410
 DOMAIN,adobeereg.com
 DOMAIN,angle.com.tw
 DOMAIN,anime-rule34-world.b-cdn.net
@@ -4195,6 +4195,7 @@ DOMAIN-SUFFIX,bravotube.tv
 DOMAIN-SUFFIX,brawlstars.com
 DOMAIN-SUFFIX,brawlstarsgame.com
 DOMAIN-SUFFIX,brazilpartneruniversity.com
+DOMAIN-SUFFIX,brazz.org
 DOMAIN-SUFFIX,brazzer.com
 DOMAIN-SUFFIX,brazzers-porno.online
 DOMAIN-SUFFIX,brazzers-xxx.net
@@ -4389,6 +4390,7 @@ DOMAIN-SUFFIX,btrp-hyperpolarised.ac.uk
 DOMAIN-SUFFIX,btt804.com
 DOMAIN-SUFFIX,btt904.com
 DOMAIN-SUFFIX,bttzyw.com
+DOMAIN-SUFFIX,bttzyw.net
 DOMAIN-SUFFIX,btwrdn.com
 DOMAIN-SUFFIX,buba.ac.uk
 DOMAIN-SUFFIX,bubbaporn.com
@@ -7947,6 +7949,7 @@ DOMAIN-SUFFIX,excitebots.com
 DOMAIN-SUFFIX,exe-coll.ac.uk
 DOMAIN-SUFFIX,exec-appointments.com
 DOMAIN-SUFFIX,exemplashe.ac.uk
+DOMAIN-SUFFIX,exeporn.net
 DOMAIN-SUFFIX,exeter.ac.uk
 DOMAIN-SUFFIX,exetercollege.ac.uk
 DOMAIN-SUFFIX,exeterdeafacademy.ac.uk
@@ -10776,6 +10779,7 @@ DOMAIN-SUFFIX,hnalady.com
 DOMAIN-SUFFIX,hnext.jp
 DOMAIN-SUFFIX,hobonichielog.com
 DOMAIN-SUFFIX,hochi.news
+DOMAIN-SUFFIX,hochu.tv
 DOMAIN-SUFFIX,hoes.com
 DOMAIN-SUFFIX,hogarth.ac.uk
 DOMAIN-SUFFIX,hoge.7jp.info
@@ -13279,6 +13283,7 @@ DOMAIN-SUFFIX,leliao1.com
 DOMAIN-SUFFIX,lemoncams.com
 DOMAIN-SUFFIX,lencr.org
 DOMAIN-SUFFIX,lenkino.xxx
+DOMAIN-SUFFIX,lenporno.net
 DOMAIN-SUFFIX,lenporno.red
 DOMAIN-SUFFIX,leos-scot.ac.uk
 DOMAIN-SUFFIX,lepoint.fr
@@ -23305,6 +23310,7 @@ DOMAIN-SUFFIX,vsezoo.com
 DOMAIN-SUFFIX,vsphere.com
 DOMAIN-SUFFIX,vsphere.net
 DOMAIN-SUFFIX,vssn.ac.uk
+DOMAIN-SUFFIX,vtrahe.page
 DOMAIN-SUFFIX,vtri.ac.uk
 DOMAIN-SUFFIX,vts.ac.uk
 DOMAIN-SUFFIX,vtsociety.org
@@ -24227,7 +24233,6 @@ DOMAIN-SUFFIX,xxbb9.com
 DOMAIN-SUFFIX,xxbook.cc
 DOMAIN-SUFFIX,xxbrits.com
 DOMAIN-SUFFIX,xxeronetxx.info
-DOMAIN-SUFFIX,xxfbiaa.xyz
 DOMAIN-SUFFIX,xxgasm.com
 DOMAIN-SUFFIX,xxindianporn.com
 DOMAIN-SUFFIX,xxiqiyiavxx.buzz
@@ -24362,6 +24367,7 @@ DOMAIN-SUFFIX,yaburi.men
 DOMAIN-SUFFIX,yaddal.tv
 DOMAIN-SUFFIX,yadori.club
 DOMAIN-SUFFIX,yaeby.info
+DOMAIN-SUFFIX,yaeby.pro
 DOMAIN-SUFFIX,yahoo-news.com.hk
 DOMAIN-SUFFIX,yahoo.ae
 DOMAIN-SUFFIX,yahoo.am
@@ -28900,6 +28906,7 @@ DOMAIN-SUFFIX,ooyala.com
 DOMAIN-SUFFIX,open.com.hk
 DOMAIN-SUFFIX,openallweb.com
 DOMAIN-SUFFIX,opendemocracy.net
+DOMAIN-SUFFIX,opendesktop.org
 DOMAIN-SUFFIX,opendn.xyz
 DOMAIN-SUFFIX,openervpn.in
 DOMAIN-SUFFIX,openid.net

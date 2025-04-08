@@ -1,14 +1,14 @@
 # NAME: Global
 # AUTHOR: blackmatrix7
 # REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2025-03-29 02:13:22
+# UPDATED: 2025-04-06 02:12:19
 # DOMAIN: 87
 # DOMAIN-KEYWORD: 36
-# DOMAIN-SUFFIX: 31163
+# DOMAIN-SUFFIX: 31170
 # IP-CIDR: 112
 # IP-CIDR6: 4
 # PROCESS-NAME: 1
-# TOTAL: 31403
+# TOTAL: 31410
 payload:
   - 'adobeereg.com'
   - 'angle.com.tw'
@@ -4196,6 +4196,7 @@ payload:
   - '+.brawlstars.com'
   - '+.brawlstarsgame.com'
   - '+.brazilpartneruniversity.com'
+  - '+.brazz.org'
   - '+.brazzer.com'
   - '+.brazzers-porno.online'
   - '+.brazzers-xxx.net'
@@ -4390,6 +4391,7 @@ payload:
   - '+.btt804.com'
   - '+.btt904.com'
   - '+.bttzyw.com'
+  - '+.bttzyw.net'
   - '+.btwrdn.com'
   - '+.buba.ac.uk'
   - '+.bubbaporn.com'
@@ -7948,6 +7950,7 @@ payload:
   - '+.exe-coll.ac.uk'
   - '+.exec-appointments.com'
   - '+.exemplashe.ac.uk'
+  - '+.exeporn.net'
   - '+.exeter.ac.uk'
   - '+.exetercollege.ac.uk'
   - '+.exeterdeafacademy.ac.uk'
@@ -10777,6 +10780,7 @@ payload:
   - '+.hnext.jp'
   - '+.hobonichielog.com'
   - '+.hochi.news'
+  - '+.hochu.tv'
   - '+.hoes.com'
   - '+.hogarth.ac.uk'
   - '+.hoge.7jp.info'
@@ -13280,6 +13284,7 @@ payload:
   - '+.lemoncams.com'
   - '+.lencr.org'
   - '+.lenkino.xxx'
+  - '+.lenporno.net'
   - '+.lenporno.red'
   - '+.leos-scot.ac.uk'
   - '+.lepoint.fr'
@@ -23306,6 +23311,7 @@ payload:
   - '+.vsphere.com'
   - '+.vsphere.net'
   - '+.vssn.ac.uk'
+  - '+.vtrahe.page'
   - '+.vtri.ac.uk'
   - '+.vts.ac.uk'
   - '+.vtsociety.org'
@@ -24228,7 +24234,6 @@ payload:
   - '+.xxbook.cc'
   - '+.xxbrits.com'
   - '+.xxeronetxx.info'
-  - '+.xxfbiaa.xyz'
   - '+.xxgasm.com'
   - '+.xxindianporn.com'
   - '+.xxiqiyiavxx.buzz'
@@ -24363,6 +24368,7 @@ payload:
   - '+.yaddal.tv'
   - '+.yadori.club'
   - '+.yaeby.info'
+  - '+.yaeby.pro'
   - '+.yahoo-news.com.hk'
   - '+.yahoo.ae'
   - '+.yahoo.am'
@@ -28901,6 +28907,7 @@ payload:
   - '+.open.com.hk'
   - '+.openallweb.com'
   - '+.opendemocracy.net'
+  - '+.opendesktop.org'
   - '+.opendn.xyz'
   - '+.openervpn.in'
   - '+.openid.net'
