@@ -306,9 +306,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 节点选择  
-      - 中转加速
-      - 直联节点    
+      - 节点选择 
       - 其他节点
       - 手动切换
 
