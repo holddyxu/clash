@@ -1,10 +1,5 @@
 proxy-groups:
-  - name: 中转加速
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
-    include-all: true
-    filter: (?i)🚀
-    type: select
-    
+
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: url-test
@@ -12,140 +7,151 @@ proxy-groups:
     interval: 300
     tolerance: 100
     proxies:
-      - 台湾节点
-      - 狮城节点
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 其他节点  
-      
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+
   - name: 手动切换
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
     include-all: true
     type: select
-    
+
+  - name: Plan B
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    include-all: true
+    filter: (?i)优化|planb  
+    type: url-test
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+
   - name: OpenAI
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
     proxies:
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点      
-      - 手动切换 
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
       
   - name: 油管视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 手动切换 
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
 
   - name: 谷歌
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
     type: select
     proxies:
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
       - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
       - 其他节点
-      - 手动切换
-      - DIRECT
-      - 节点选择       
-
+      - Plan B
+      - 手动切换    
       
   - name: 微软服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     type: select
     proxies:
-      - DIRECT    
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - DIRECT 
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
+      - 欧洲节点
+      - 其他节点
+      - Plan B
       - 手动切换
       
   - name: 苹果服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
     type: select
     proxies:
-      - DIRECT    
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - DIRECT 
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
       - 欧洲节点
-      - 美洲节点
-      - 澳洲节点
       - 其他节点
+      - Plan B
       - 手动切换
 
   - name: 电报消息
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 手动切换 
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
       
   - name: 游戏平台
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
     type: select
     proxies:
       - DIRECT    
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 手动切换  
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
+
   - name: 奈飞视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     type: select
     proxies:
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 手动切换 
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
       
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
@@ -177,11 +183,16 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
-      - 手动切换  
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
+      - 美国节点
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换
       
   - name: 全球直连
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
@@ -202,26 +213,32 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT    
-      - 节点选择
-      - 中转加速
-      - 直联节点
+      - 节点选择    
+      - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
+      - 美国节点
+      - 欧洲节点
       - 其他节点
-      - 手动切换      
+      - Plan B
+      - 手动切换     
 
   - name: 微软云盘
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
     type: select
     proxies:
       - DIRECT
-      - 节点选择
-      - 中转加速
-      - 直联节点    
-      - 香港节点
-      - 台湾节点
-      - 狮城节点
+      - 节点选择    
       - 日本节点
+      - 台湾节点
+      - 香港节点
+      - 狮城节点
       - 美国节点
-      - 手动切换    
+      - 欧洲节点
+      - 其他节点
+      - Plan B
+      - 手动切换   
 
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
@@ -267,6 +284,22 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
+
+  - name: 欧洲节点 
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
+    include-all: true
+    filter: (?i)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列
+    type: url-test
+    interval: 300
+    tolerance: 100
+
+  - name: 其他节点 
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
+    include-all: true
+    filter: (?!.*)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|港|HK|hk|Hong Kong|HongKong|hongkong
+    type: url-test
+    interval: 300
+    tolerance: 100    
 
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
