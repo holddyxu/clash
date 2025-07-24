@@ -24,7 +24,7 @@ proxy-groups:
   - name: Plan B
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     include-all: true
-    filter: (?i)优化|planb  
+    filter: (?i)优化|planb
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -270,7 +270,27 @@ proxy-groups:
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
-    filter: (?i)^(?!.*(落地 HK JP加速|HK JP加速|HKJP加速)).*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan).*$
+    # 排除包含“落地 HK JP加速”、“HK JP加速”、“HKJP加速”的节点
+    # 匹配日本相关关键词
+    # 用于自动筛选日本相关节点，排除部分加速节点，便于后续维护和扩展
+    filter: |-
+      (?i)^
+      (?!.*(落地 HK JP加速|HK JP加速|HKJP加速))
+      .*
+      (
+        日本      # Japan (Chinese)
+        |川日    # Chuan Japan
+        |东京    # Tokyo
+        |大阪    # Osaka
+        |泉日    # Izumi Japan
+        |埼玉    # Saitama
+        |沪日    # Shanghai Japan
+        |深日    # Shenzhen Japan
+        |JP      # Japan (country code)
+        |Japan   # Japan (English)
+      )
+      .*
+      $
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -295,8 +315,17 @@ proxy-groups:
 
   - name: 其他节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
-    include-all: true
-    filter: (?!.*)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|港|HK|hk|Hong Kong|HongKong|hongkong
+    # 其他节点过滤规则，排除所有已定义地区关键词
+    filter: |-
+      ^(?!.*(
+        欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列
+        |美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城
+        |日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
+        |新加坡|坡|狮城|SG|Singapore
+        |台|新北|彰化|TW|Taiwan
+        |港|HK|hk|Hong Kong|HongKong|hongkong
+      )).*$
+    filter: ^(?!.*(欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|新加坡|坡|狮城|SG|Singapore|台|新北|彰化|TW|Taiwan|港|HK|hk|Hong Kong|HongKong|hongkong)).*$
     type: url-test
     interval: 300
     tolerance: 100    
@@ -567,14 +596,9 @@ rule-providers:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Check/Check.yaml
     path: ./ruleset/Check.yaml
     behavior: classical
-    interval: 86400
-    type: http  
-  ManualAdjust:
-    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ManualAdjust/ManualAdjust.yaml
-    path: ./ruleset/ManualAdjust.yaml
-    behavior: classical
-    interval: 86400
-    type: http   
+# 规则优先级说明：
+# 规则从上到下依次匹配，匹配到第一个规则后即停止，不再继续往下匹配。
+# 建议根据实际需求调整规则顺序，优先级高的规则放在前面。
 
 rules:
 
@@ -608,6 +632,15 @@ rules:
   - "RULE-SET,YouTube,油管视频"
   - "RULE-SET,YouTubeMusic,美国节点"  
   - "RULE-SET,Netflix,奈飞视频"
+  - "RULE-SET,Bahamut,巴哈姆特"
+  - "RULE-SET,BiliBiliIntl,哔哩哔哩"
+  - "RULE-SET,ProxyGFW,节点选择"
+  - "RULE-SET,ProxyGFWDomain,节点选择"
+  - "RULE-SET,Developer,Developer"
+  - "RULE-SET,GitHub,Developer"  
+  - "RULE-SET,ImgHostAbroad,节点选择"
+  - "RULE-SET,JAV,日本节点"
+  - "RULE-SET,ManualAdjust,节点选择"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BiliBiliIntl,哔哩哔哩"
   - "RULE-SET,ProxyGFW,节点选择"
