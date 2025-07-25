@@ -568,6 +568,14 @@ rule-providers:
     behavior: classical
     interval: 86400
     type: http
+
+  ManualAdjust:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ManualAdjust/ManualAdjust.yaml
+    path: ./ruleset/ManualAdjust.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
+        
 # 规则优先级说明：
 # 规则从上到下依次匹配，匹配到第一个规则后即停止，不再继续往下匹配。
 # 建议根据实际需求调整规则顺序，优先级高的规则放在前面。
