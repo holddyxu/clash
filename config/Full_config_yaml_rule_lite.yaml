@@ -565,7 +565,7 @@ rule-providers:
   Check:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Check/Check.yaml
     path: ./ruleset/Check.yaml
-    behavior: classica
+    behavior: classical
     interval: 86400
     type: http
 # 规则优先级说明：
