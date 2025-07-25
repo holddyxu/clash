@@ -261,24 +261,7 @@ proxy-groups:
     # 排除包含“落地 HK JP加速”、“HK JP加速”、“HKJP加速”的节点
     # 匹配日本相关关键词
     # 用于自动筛选日本相关节点，排除部分加速节点，便于后续维护和扩展
-    filter: |-
-      (?i)^
-      (?!.*(落地 HK JP加速|HK JP加速|HKJP加速))
-      .*
-      (
-        日本      # Japan (Chinese)
-        |川日    # Chuan Japan
-        |东京    # Tokyo
-        |大阪    # Osaka
-        |泉日    # Izumi Japan
-        |埼玉    # Saitama
-        |沪日    # Shanghai Japan
-        |深日    # Shenzhen Japan
-        |JP      # Japan (country code)
-        |Japan   # Japan (English)
-      )
-      .*
-      $
+    filter: (?i)日本|东京|大阪|福冈|名古屋|横滨|京都|札幌|神户|千叶|川崎|埼玉|仙台|广岛|熊本|鹿儿岛|JP|Japan
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -575,7 +558,7 @@ rule-providers:
     behavior: classical
     interval: 86400
     type: http   
-        
+
 # 规则优先级说明：
 # 规则从上到下依次匹配，匹配到第一个规则后即停止，不再继续往下匹配。
 # 建议根据实际需求调整规则顺序，优先级高的规则放在前面。
@@ -610,7 +593,7 @@ rules:
   - "RULE-SET,Steam,游戏平台"
   - "RULE-SET,Nintendo,游戏平台"
   - "RULE-SET,YouTube,油管视频"
-  - "RULE-SET,YouTubeMusic,美国节点"  
+  - "RULE-SET,YouTubeMusic,节点选择"  
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BiliBiliIntl,哔哩哔哩"
