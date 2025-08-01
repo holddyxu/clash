@@ -228,7 +228,7 @@ proxy-groups:
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
-    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
+    filter: '(?i)^(?!.*mojie).*(港|hk|hong kong|hongkong)'
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -237,7 +237,7 @@ proxy-groups:
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
+    filter: '(?i)^(?!.*mojie).*(台|新北|彰化|TW|Taiwan)'
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -246,7 +246,7 @@ proxy-groups:
   - name: 狮城节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
-    filter: (?i)新加坡|坡|狮城|SG|Singapore
+    filter: '(?i)^(?!.*mojie).*(新加坡|坡|狮城|SG|Singapore)'
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -258,7 +258,7 @@ proxy-groups:
     # 排除包含“落地 HK JP加速”、“HK JP加速”、“HKJP加速”的节点
     # 匹配日本相关关键词
     # 用于自动筛选日本相关节点，排除部分加速节点，便于后续维护和扩展
-    filter: (?i)日本|东京|大阪|福冈|名古屋|横滨|京都|札幌|神户|千叶|川崎|埼玉|仙台|广岛|熊本|鹿儿岛|JP|Japan
+    filter: '(?i)^(?!.*mojie).*(日本|东京|大阪|福冈|名古屋|横滨|京都|札幌|神户|千叶|川崎|埼玉|仙台|广岛|熊本|鹿儿岛|JP|Japan)'
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -267,7 +267,7 @@ proxy-groups:
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
-    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城
+    filter: '(?i)^(?!.*mojie).*(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城)'
     type: url-test
     url: http://cp.cloudflare.com/generate_204
     interval: 300
@@ -276,8 +276,9 @@ proxy-groups:
   - name: 欧洲节点 
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
     include-all: true
-    filter: (?i)欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|西班牙|SP|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列
+    filter: '(?i)^(?!.*mojie).*(欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列)'
     type: url-test
+    url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 100
  
