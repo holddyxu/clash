@@ -23,11 +23,8 @@ proxy-groups:
   - name: Plan B
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     include-all: true
-    filter: (?i)优化|planb
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
+    filter: (?i)优化|planb|mojie
+    type: select
 
   - name: OpenAI
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
