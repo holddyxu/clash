@@ -21,19 +21,19 @@
 
 ## 规则统计
 
-最后更新时间：2025-11-24 02:09:51
+最后更新时间：2025-12-16 02:09:55
 
 各类型规则统计：
 | 类型 | 数量(条)  | 
 | ---- | ----  |
 | DOMAIN | 290  | 
 | DOMAIN-KEYWORD | 13  | 
-| DOMAIN-SUFFIX | 117254  | 
+| DOMAIN-SUFFIX | 117535  | 
 | IP-ASN | 1  | 
-| IP-CIDR | 8171  | 
-| IP-CIDR6 | 11737  | 
+| IP-CIDR | 8260  | 
+| IP-CIDR6 | 12156  | 
 | PROCESS-NAME | 14  | 
-| TOTAL | 137480  | 
+| TOTAL | 138269  | 
 
 
 ## Clash 
@@ -479,8 +479,6 @@ https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_scri
 - https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/cstnet6.txt
 - https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/drpeng.txt
 - https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/drpeng6.txt
-- https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/tietong.txt
-- https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/tietong6.txt
 - https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/unicom.txt
 - https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/unicom6.txt
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/WoLai.list
