@@ -1,311 +1,287 @@
-proxy-groups:
+# ==========================================
+# Mihomo (Clash Meta) Configuration
+# ==========================================
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+# secret: "your-secret-here" # 🔑 默认不启用，请手动配置
 
-  - name: 节点选择
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+# ----------------------------------------
+# 1. 这里是【定义】的地方
+# ----------------------------------------
+proxy-providers:
+  MySubscription:  # <--- 名字在这里定义！你可以改成 "Airport" 或 "SubStore"
+    type: http
+    url: "https://你的订阅链接.com/..." # <--- 链接填在这里！！
+    path: ./proxies/subs.yaml
+    interval: 3600
+
+# ----------------------------------------
+# 2. 这里是【引用】的地方
+# ----------------------------------------
+
+proxy-groups:
+  # ==========================================
+  # 第一层：资源筛选池 (Pools)
+  # ==========================================
+
+  # 1. 日本线路池 - 自动选择 (你的要求：日本中转单独一组，自动选)
+  - name: 🚄 日本线路-自动
     type: url-test
+    use:
+      - MySubscription
+    filter: '(?i)\[Line\].*(日本|JP|Japan|Tokyo|Osaka)'
     url: http://cp.cloudflare.com/generate_204
     interval: 300
-    tolerance: 100
-    proxies:
-      - 中转加速
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
+    tolerance: 50
 
-  - name: 手动切换
+  # 2. 全球线路池 - 手动选择 (你的要求：所有线路放一组，手动选)
+  - name: 🚄 线路手动盘
+    type: select
+    use:
+      - MySubscription
+    filter: '(?i)\[Line\]'
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    include-all: true
-    type: select
 
-  - name: Plan B
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
-    include-all: true
-    filter: (?i)优化|planb|mojie
+  # ==========================================
+  # 第二层：链式代理组 (Chains / Relays)
+  # ==========================================
+
+  # 链式 A：日本极速链 (满足要求：日本线路自动 -> 日本落地)
+  - name: 极速日本
+    type: url-test
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    dialer-proxy: 🚄 日本线路-自动
+
+  # 链式 B：美国/全球手动链 (满足要求：手动选线路 -> 美国落地)
+  - name: 极速美国
+    type: url-test
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\].*(美国|US|United States|America)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    dialer-proxy: 🚄 线路手动盘
+
+  # 链式 C：通用手动链 (满足要求：手动选线路 -> 美日以外落地)
+  - name: 极速全球
     type: select
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\]'
+    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
+    dialer-proxy: 🚄 线路手动盘
+
+  # ==========================================
+  # 第三层：业务策略组 (Services)
+  # ==========================================
+
+  - name: 节点选择
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    proxies:
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
+      - DIRECT
 
   - name: OpenAI
+    type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
-    type: select
     proxies:
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
-      
+      - 极速美国
+      - 极速全球
+
+  - name: 哔哩哔哩
+    type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    proxies:
+      - 极速日本
+      - 极速全球
+
   - name: 油管视频
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     proxies:
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
+      - 极速日本
+      - 极速美国
+      - 极速全球
 
   - name: 谷歌
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
     type: select
     proxies:
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换    
-      
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
+
   - name: 微软服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
     type: select
     proxies:
-      - DIRECT 
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
-      
+      - DIRECT
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
+
   - name: 苹果服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
     type: select
     proxies:
-      - DIRECT 
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
+      - DIRECT
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
 
   - name: 电报消息
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
     type: select
     proxies:
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
-      
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
+
   - name: 游戏平台
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
     type: select
     proxies:
-      - DIRECT    
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
+      - DIRECT
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
 
   - name: 奈飞视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     type: select
     proxies:
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
-      
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
+
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
     type: select
     proxies:
-      - 台湾节点
-      - 节点选择
-      - 手动切换
-      - DIRECT
-      
-  - name: 哔哩哔哩
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
-    type: select
-    proxies:
-      - 全球直连
-      - 台湾节点
-      - 香港节点
-      
+      - 极速日本
+      - 极速全球
+
   - name: 国外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
     type: select
     proxies:
       - 节点选择
-      - 手动切换
+      - 🚄 线路手动盘
       - DIRECT
-      
+
   - name: 国内媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
     type: select
     proxies:
       - DIRECT
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换
-      
+      - 节点选择
+
   - name: 全球直连
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
     type: select
     proxies:
       - DIRECT
       - 节点选择
-      
+
   - name: 广告拦截
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
     proxies:
       - REJECT
       - DIRECT
-            
+
   - name: Developer
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
     type: select
     proxies:
-      - DIRECT    
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换     
+      - DIRECT
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
 
   - name: 微软云盘
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
     type: select
     proxies:
       - DIRECT
-      - 节点选择    
-      - 台湾节点
-      - 香港节点
-      - 亚太节点
-      - 美国节点
-      - 欧洲节点
-      - Plan B
-      - 手动切换   
+      - 节点选择
+      - 极速日本
+      - 极速美国
+      - 极速全球
+      - 🚄 线路手动盘
 
-  - name: 中转节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Acceleration.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(中转|accelerate|acceleration|proxy|转发|relay)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-
-- name: "🇭🇰 香港加速节点"
-    type: relay
-    proxies:
-      - "中转节点"   
-      - "香港落地"
-
-- name: "台湾加速节点"
-    type: relay
-    proxies:
-      - "中转节点"   
-      - "台湾落地"
-
-- name: "亚太加速节点"
-    type: relay
-    proxies:
-      - "中转节点"   
-      - "亚太落地"
-
-- name: "🇺🇸 美国加速节点"
-    type: relay
-    proxies:
-      - "中转节点"   
-      - "美国落地"
-
-- name: "欧洲加速节点"
-    type: relay
-    proxies:
-      - "中转节点"   
-      - "欧洲落地"
-
-  - name: 香港落地
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(港|hk|hong kong|hongkong)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 50
-
-  - name: 台湾落地
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(台|新北|彰化|TW|Taiwan)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-
-  - name: 亚太落地
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Asia_Pacific.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(日本|东京|大阪|福冈|名古屋|横滨|京都|札幌|神户|千叶|川崎|埼玉|仙台|广岛|熊本|鹿儿岛|JP|Japan|新加坡|坡|狮城|SG|Singapore|亚太|亚洲|新加坡|韩国|首尔|釜山|越南|胡志明市|河内|泰国|曼谷|马来西亚|吉隆坡|印尼|雅加达|菲律宾|马尼拉|印度|孟买|班加罗尔|德里|AU|Australia|NZ|New Zealand|KR|South Korea|VN|TH|MY|ID|PH|IN)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100  
-    
-  - name: 美国落地
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|纽约|丹佛|盐湖城)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-
-  - name: 欧洲落地 
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/European_Union.png
-    include-all: true
-    filter: '(?i)^(?!.*mojie).*(欧|欧洲|英国|伦敦|利物浦|法国|巴黎|马赛|德国|柏林|慕尼黑|西班牙|马德里|意大利|罗马|米兰|GK|FR|GE|SP|IT|冰岛|荷兰|卢森堡|LU|乌克兰|波兰|葡萄牙|比利时|瑞士|芬兰|保加利亚|匈牙利|土耳其|以色列)'
-    type: url-test
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
- 
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     type: select
     proxies:
       - DIRECT
-      - 节点选择 
-      - 手动切换
+      - 节点选择
+      - 🚄 线路手动盘
+
+  # Alias (Backward Compatibility)
+  - name: 美国节点
+    type: select
+    proxies:
+      - 极速美国
+      - 极速全球
+
+  - name: 日本节点
+    type: select
+    proxies:
+      - 极速日本
+      - 极速全球
+
+  # 3. 日本落地池 (Moved to end)
+  - name: � 日本落地
+    type: select
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
+
+  # 4. 美国落地池 (Moved to end)
+  - name: 🛬 美国落地
+    type: select
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\].*(美国|US|United States|America)'
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+
+  # 5. 其他落地池 (美日以外的地区) (Moved to end)
+  - name: � 其他落地
+    type: select
+    use:
+      - MySubscription
+    filter: '(?i)\[Landing\]'
+    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
 
 rule-providers:
   Advertising:
