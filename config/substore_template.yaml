@@ -324,31 +324,6 @@ proxy-groups:
       - 极速台湾
       - 🚄 中转线路选择
 
-  # 兼容别名（用于规则引用）
-  - name: 美国节点
-    type: select
-    proxies:
-      - 极速美国
-      - 极速全球
-
-  - name: 日本节点
-    type: select
-    proxies:
-      - 极速日本
-      - 极速全球
-
-  - name: 台湾节点
-    type: select
-    proxies:
-      - 极速台湾
-      - 极速全球
-
-  - name: 香港节点
-    type: select
-    proxies:
-      - 极速香港
-      - 极速全球
-
 # ==========================================
 # 规则提供者
 # ==========================================
@@ -638,12 +613,12 @@ rules:
   - "RULE-SET,OpenAI,OpenAI"
   - "RULE-SET,Copilot,OpenAI"   
   - "RULE-SET,BardAI,OpenAI"  
-  - "RULE-SET,Claude,美国节点"  
+  - "RULE-SET,Claude,极速美国"  
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,Telegram,电报消息"
-  - "RULE-SET,TalkTone,美国节点"
+  - "RULE-SET,TalkTone,极速美国"
   - "RULE-SET,Check,节点选择"
   - "RULE-SET,Epic,游戏平台"
   - "RULE-SET,Origin,游戏平台"
@@ -658,7 +633,7 @@ rules:
   - "RULE-SET,Developer,Developer"
   - "RULE-SET,GitHub,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
-  - "RULE-SET,JAV,日本节点"
+  - "RULE-SET,JAV,极速日本"
   - "RULE-SET,ManualAdjust,节点选择"
   - "RULE-SET,ProxyGFW,节点选择"
   - "RULE-SET,ProxyGFWDomain,节点选择"
