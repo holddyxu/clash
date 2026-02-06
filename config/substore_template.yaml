@@ -1,93 +1,99 @@
 # ==========================================
-# Mihomo (Clash Meta) Configuration
+# Sub-Store Complete Config Template for Mihomo
 # ==========================================
+# 此模板用于 Sub-Store "文件" 功能
+# Sub-Store 会将节点自动注入到 proxies: 下方
+# ==========================================
+
+# 基础设置
 mixed-port: 7890
 allow-lan: true
 mode: rule
 log-level: info
 ipv6: true
 external-controller: 0.0.0.0:9090
-# secret: "your-secret-here" # 🔑 默认不启用，请手动配置
+# secret: "your-secret-here"
 
-# ----------------------------------------
-# 1. 这里是【定义】的地方
-# ----------------------------------------
-proxy-providers:
-  MySubscription:  # <--- 名字在这里定义！你可以改成 "Airport" 或 "SubStore"
-    type: http
-    url: "https://你的订阅链接.com/..." # <--- 链接填在这里！！
-    path: ./proxies/subs.yaml
-    interval: 3600
+# DNS 设置（可选，根据你的需求调整）
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
 
-# ----------------------------------------
-# 2. 这里是【引用】的地方
-# ----------------------------------------
+# ==========================================
+# proxies: 将由 Sub-Store 自动填充
+# ==========================================
 
+# ==========================================
+# 策略组 - 链式代理架构
+# ==========================================
 proxy-groups:
-  # ==========================================
-  # 第一层：资源筛选池 (Pools)
-  # ==========================================
-
-  # 1. 日本线路池 - 自动选择 (你的要求：日本中转单独一组，自动选)
+  # ====================
+  # 第一层：线路池 (中转节点)
+  # ====================
+  
+  # 日本线路 - 自动选择
   - name: 🚄 日本线路-自动
     type: url-test
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Line\].*(日本|JP|Japan|Tokyo|Osaka)'
     url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
 
-  # 2. 全球线路池 - 手动选择 (你的要求：所有线路放一组，手动选)
+  # 全部线路 - 手动选择
   - name: 🚄 线路手动盘
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Line\]'
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
 
-  # ==========================================
-  # 第二层：链式代理组 (Chains / Relays)
-  # ==========================================
-
-  # 链式 A：日本极速链 (满足要求：日本线路自动 -> 日本落地)
+  # ====================
+  # 第二层：链式代理组 (落地节点 + dialer-proxy)
+  # ====================
+  
+  # 极速日本：日本落地 <- 日本线路自动
   - name: 极速日本
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
     dialer-proxy: 🚄 日本线路-自动
 
-  # 链式 B：美国/全球手动链 (满足要求：手动选线路 -> 美国落地)
+  # 极速美国：美国落地 <- 手动选线路
   - name: 极速美国
-    type: select # 已改为手动 select
-    use:
-      - MySubscription
+    type: select
+    include-all-proxies: true
     filter: '(?i)\[Landing\].*(美国|US|United States|America)'
-    # url: http://cp.cloudflare.com/generate_204 # Manual select 不需要 url-test
-    # interval: 300
     dialer-proxy: 🚄 线路手动盘
 
-  # 链式 C：通用手动链 (满足要求：手动选线路 -> 美日以外落地)
+  # 极速全球：其他落地 <- 手动选线路
   - name: 极速全球
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Landing\]'
     exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
     dialer-proxy: 🚄 线路手动盘
 
-  # 链式 D：测试链式 (User Requested)
-  - name: 🧪 测试链式
-    type: relay
-    proxies:
-      - "[Line]JP_Relay-01"   # 确保名字在节点列表里完全一致
-      - "[Landing]🇯🇵 日本东京落地-ss" # 确保名字在节点列表里完全一致 
-
-  # ==========================================
-  # 第三层：业务策略组 (Services)
-  # ==========================================
-
+  # ====================
+  # 第三层：业务策略组
+  # ====================
+  
   - name: 节点选择
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
@@ -97,7 +103,6 @@ proxy-groups:
       - 极速全球
       - 🚄 线路手动盘
       - DIRECT
-      - 🧪 测试链式
 
   - name: OpenAI
     type: select
@@ -105,13 +110,7 @@ proxy-groups:
     proxies:
       - 极速美国
       - 极速全球
-
-  - name: 哔哩哔哩
-    type: select
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
-    proxies:
-      - 极速日本
-      - 极速全球
+      - 节点选择
 
   - name: 油管视频
     type: select
@@ -120,6 +119,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
+      - 节点选择
 
   - name: 谷歌
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Google_Search.png
@@ -190,6 +190,15 @@ proxy-groups:
     proxies:
       - 极速日本
       - 极速全球
+      - 节点选择
+
+  - name: 哔哩哔哩
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    type: select
+    proxies:
+      - DIRECT
+      - 极速日本
+      - 极速全球
 
   - name: 国外媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
@@ -250,7 +259,7 @@ proxy-groups:
       - 节点选择
       - 🚄 线路手动盘
 
-  # Alias (Backward Compatibility)
+  # 兼容别名
   - name: 美国节点
     type: select
     proxies:
@@ -263,30 +272,41 @@ proxy-groups:
       - 极速日本
       - 极速全球
 
-  # 3. 日本落地池 (Moved to end)
-  - name: � 日本落地
+  - name: 台湾节点
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
+    filter: '(?i)(台|新北|彰化|TW|Taiwan)'
+
+  - name: 香港节点
+    type: select
+    include-all-proxies: true
+    filter: '(?i)(港|hk|hong kong|hongkong)'
+
+  # ====================
+  # 资源池（单独查看用）
+  # ====================
+  
+  - name: 🛬 日本落地
+    type: select
+    include-all-proxies: true
     filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
 
-  # 4. 美国落地池 (Moved to end)
   - name: 🛬 美国落地
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Landing\].*(美国|US|United States|America)'
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
 
-  # 5. 其他落地池 (美日以外的地区) (Moved to end)
-  - name: � 其他落地
+  - name: 🛬 其他落地
     type: select
-    use:
-      - MySubscription
+    include-all-proxies: true
     filter: '(?i)\[Landing\]'
     exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
 
+# ==========================================
+# 规则提供者
+# ==========================================
 rule-providers:
   Advertising:
    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_No_Resolve.yaml
@@ -554,12 +574,10 @@ rule-providers:
     interval: 86400
     type: http   
 
-# 规则优先级说明：
-# 规则从上到下依次匹配，匹配到第一个规则后即停止，不再继续往下匹配。
-# 建议根据实际需求调整规则顺序，优先级高的规则放在前面。
-
+# ==========================================
+# 规则
+# ==========================================
 rules:
-
   - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ChinaMaxDomain,全球直连"
   - "RULE-SET,ChinaMax,全球直连"  
@@ -592,19 +610,11 @@ rules:
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BiliBiliIntl,哔哩哔哩"
-  - "RULE-SET,ProxyGFW,节点选择"
-  - "RULE-SET,ProxyGFWDomain,节点选择"
   - "RULE-SET,Developer,Developer"
   - "RULE-SET,GitHub,Developer"  
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
   - "RULE-SET,ManualAdjust,节点选择"
-  - "RULE-SET,Bahamut,巴哈姆特"
-  - "RULE-SET,BiliBiliIntl,哔哩哔哩"
   - "RULE-SET,ProxyGFW,节点选择"
   - "RULE-SET,ProxyGFWDomain,节点选择"
-  - "RULE-SET,Developer,Developer"
-  - "RULE-SET,GitHub,Developer"  
-  - "RULE-SET,ImgHostAbroad,节点选择"
-  - "RULE-SET,JAV,日本节点"
-  - "RULE-SET,ManualAdjust,节点选择"
+  - "MATCH,漏网之鱼"
