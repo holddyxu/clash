@@ -51,47 +51,51 @@ proxy-groups:
   # 第一层：线路池 (中转节点)
   # ====================
   
-  # 日本线路 - 自动选择
-  - name: 🚄 日本线路-自动
+  # 日本中转线路 - 自动选择（仅日本链式节点使用）
+  - name: 🇯🇵 日本中转 only
     type: url-test
     include-all-proxies: true
-    filter: '(?i)\[Line\].*(日本|JP|Japan|Tokyo|Osaka)'
+    filter: '(?i)^\[Line\]'
+    exclude-filter: '(?i)\[Landing\]'
     url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
 
   # 全部线路 - 手动选择
-  - name: 🚄 线路手动盘
+  - name: 🚄 中转线路选择
     type: select
     include-all-proxies: true
-    filter: '(?i)\[Line\]'
+    filter: '(?i)^\[Line\]'
+    exclude-filter: '(?i)\[Landing\]'
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
 
   # ====================
   # 第二层：链式代理组 (落地节点 + dialer-proxy)
   # ====================
   
-  # 极速日本：日本落地 <- 日本线路自动
+  # 极速日本：日本落地 <- 中转线路自动
   - name: 极速日本
     type: select
     include-all-proxies: true
     filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
-    dialer-proxy: 🚄 日本线路-自动
+    exclude-filter: '(?i)(香港|HK|美国|US|台湾|TW|英国|UK)'
+    dialer-proxy: 🇯🇵 日本中转 only
 
   # 极速美国：美国落地 <- 手动选线路
   - name: 极速美国
     type: select
     include-all-proxies: true
     filter: '(?i)\[Landing\].*(美国|US|United States|America)'
-    dialer-proxy: 🚄 线路手动盘
+    exclude-filter: '(?i)(日本|JP|香港|HK|台湾|TW|英国|UK)'
+    dialer-proxy: 🚄 中转线路选择
 
-  # 极速全球：其他落地 <- 手动选线路
+  # 极速全球：链接到🛬其他落地
   - name: 极速全球
     type: select
-    include-all-proxies: true
-    filter: '(?i)\[Landing\]'
-    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
-    dialer-proxy: 🚄 线路手动盘
+    proxies:
+      - 🛬 其他落地
+      - 🚄 中转线路选择
+    dialer-proxy: 🚄 中转线路选择
 
   # ====================
   # 第三层：业务策略组
@@ -104,7 +108,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
       - DIRECT
 
   - name: OpenAI
@@ -132,7 +136,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 微软服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Microsoft.png
@@ -143,7 +147,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 苹果服务
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple.png
@@ -154,7 +158,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 电报消息
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png
@@ -164,7 +168,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 游戏平台
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
@@ -175,7 +179,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 奈飞视频
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
@@ -185,7 +189,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 巴哈姆特
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
@@ -208,7 +212,7 @@ proxy-groups:
     type: select
     proxies:
       - 节点选择
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
       - DIRECT
 
   - name: 国内媒体
@@ -241,7 +245,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 微软云盘
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/OneDrive.png
@@ -252,7 +256,7 @@ proxy-groups:
       - 极速日本
       - 极速美国
       - 极速全球
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   - name: 漏网之鱼
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
@@ -260,7 +264,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - 节点选择
-      - 🚄 线路手动盘
+      - 🚄 中转线路选择
 
   # 兼容别名
   - name: 美国节点
@@ -275,15 +279,26 @@ proxy-groups:
       - 极速日本
       - 极速全球
 
+  # 地区链式节点组 - 自动选择
   - name: 台湾节点
-    type: select
+    type: url-test
     include-all-proxies: true
-    filter: '(?i)(台|新北|彰化|TW|Taiwan)'
+    filter: '(?i)\[Landing\].*(台|新北|彰化|TW|Taiwan)'
+    exclude-filter: '(?i)(日本|JP|美国|US|香港|HK|英国|UK)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    dialer-proxy: 🚄 中转线路选择
 
   - name: 香港节点
-    type: select
+    type: url-test
     include-all-proxies: true
-    filter: '(?i)(港|hk|hong kong|hongkong)'
+    filter: '(?i)\[Landing\].*(港|hk|hong kong|hongkong)'
+    exclude-filter: '(?i)(日本|JP|美国|US|台湾|TW|英国|UK)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    dialer-proxy: 🚄 中转线路选择
 
   # ====================
   # 资源池（单独查看用）
@@ -301,10 +316,14 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
 
   - name: 🛬 其他落地
-    type: select
+    type: url-test
     include-all-proxies: true
     filter: '(?i)\[Landing\]'
-    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America)'
+    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America|香港|HK|Hong Kong|台湾|TW|Taiwan)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    dialer-proxy: 🚄 中转线路选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
 
 # ==========================================
