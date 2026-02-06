@@ -27,14 +27,17 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    - 'https://doh.pub/dns-query'
+    - 'https://dns.alidns.com/dns-query'
   fallback:
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
+    - 'https://1.1.1.1/dns-query'
+    - 'https://dns.google/dns-query'
   fallback-filter:
     geoip: true
     geoip-code: CN
+  proxy-server-nameserver:
+    - 'https://doh.pub/dns-query'
+    - 'https://dns.alidns.com/dns-query'
 
 # ==========================================
 # proxies: 将由 Sub-Store 自动填充
