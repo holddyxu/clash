@@ -48,15 +48,23 @@ dns:
 # ==========================================
 proxy-groups:
   # ====================
-  # 第一层：线路池 (中转节点)
+  # 线路节点池（直连中转，非链式）
   # ====================
   
-  # 日本中转线路 - 自动选择（仅日本链式节点使用）
-  - name: 🇯🇵 日本中转 only
+  # 日本线路 - 自动选择
+  - name: 🇯🇵 日本线路-自动
     type: url-test
     include-all-proxies: true
-    filter: '(?i)^\[Line\]'
-    exclude-filter: '(?i)\[Landing\]'
+    filter: '(?i)^\[Line\].*(JP|日本)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+
+  # 美国线路 - 自动选择
+  - name: 🇺🇸 美国线路-自动
+    type: url-test
+    include-all-proxies: true
+    filter: '(?i)^\[Line\].*(US|美国)'
     url: http://cp.cloudflare.com/generate_204
     interval: 300
     tolerance: 50
@@ -66,36 +74,56 @@ proxy-groups:
     type: select
     include-all-proxies: true
     filter: '(?i)^\[Line\]'
-    exclude-filter: '(?i)\[Landing\]'
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
 
   # ====================
-  # 第二层：链式代理组 (落地节点 + dialer-proxy)
+  # 地区落地组（链式节点，已由 Sub-Store 处理好）
   # ====================
   
-  # 极速日本：日本落地 <- 中转线路自动
+  # 日本落地链式节点 + 日本线路
   - name: 极速日本
     type: select
     include-all-proxies: true
-    filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
-    exclude-filter: '(?i)(香港|HK|美国|US|台湾|TW|英国|UK)'
-    dialer-proxy: 🇯🇵 日本中转 only
+    filter: '(?i)(\[Landing\].*🇯🇵|^\[Line\].*JP)'
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
 
-  # 极速美国：美国落地 <- 手动选线路
+  # 美国落地链式节点 + 美国线路
   - name: 极速美国
     type: select
     include-all-proxies: true
-    filter: '(?i)\[Landing\].*(美国|US|United States|America)'
-    exclude-filter: '(?i)(日本|JP|香港|HK|台湾|TW|英国|UK)'
-    dialer-proxy: 🚄 中转线路选择
+    filter: '(?i)(\[Landing\].*🇺🇸|^\[Line\].*US)'
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
 
-  # 极速全球：链接到🛬其他落地
+  # 香港落地链式节点
+  - name: 极速香港
+    type: url-test
+    include-all-proxies: true
+    filter: '(?i)\[Landing\].*🇭🇰'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+
+  # 台湾落地链式节点
+  - name: 极速台湾
+    type: url-test
+    include-all-proxies: true
+    filter: '(?i)\[Landing\].*🇹🇼'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+
+  # 其他地区落地链式节点（排除日美港台）
   - name: 极速全球
-    type: select
-    proxies:
-      - 🛬 其他落地
-      - 🚄 中转线路选择
-    dialer-proxy: 🚄 中转线路选择
+    type: url-test
+    include-all-proxies: true
+    filter: '(?i)\[Landing\]'
+    exclude-filter: '(?i)(🇯🇵|🇺🇸|🇭🇰|🇹🇼)'
+    url: http://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 100
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
 
   # ====================
   # 第三层：业务策略组
@@ -266,7 +294,7 @@ proxy-groups:
       - 节点选择
       - 🚄 中转线路选择
 
-  # 兼容别名
+  # 兼容别名（用于规则引用）
   - name: 美国节点
     type: select
     proxies:
@@ -279,52 +307,17 @@ proxy-groups:
       - 极速日本
       - 极速全球
 
-  # 地区链式节点组 - 自动选择
   - name: 台湾节点
-    type: url-test
-    include-all-proxies: true
-    filter: '(?i)\[Landing\].*(台|新北|彰化|TW|Taiwan)'
-    exclude-filter: '(?i)(日本|JP|美国|US|香港|HK|英国|UK)'
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    dialer-proxy: 🚄 中转线路选择
+    type: select
+    proxies:
+      - 极速台湾
+      - 极速全球
 
   - name: 香港节点
-    type: url-test
-    include-all-proxies: true
-    filter: '(?i)\[Landing\].*(港|hk|hong kong|hongkong)'
-    exclude-filter: '(?i)(日本|JP|美国|US|台湾|TW|英国|UK)'
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    dialer-proxy: 🚄 中转线路选择
-
-  # ====================
-  # 资源池（单独查看用）
-  # ====================
-  
-  - name: 🛬 日本落地
     type: select
-    include-all-proxies: true
-    filter: '(?i)\[Landing\].*(日本|JP|Japan|Tokyo|Osaka)'
-
-  - name: 🛬 美国落地
-    type: select
-    include-all-proxies: true
-    filter: '(?i)\[Landing\].*(美国|US|United States|America)'
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
-
-  - name: 🛬 其他落地
-    type: url-test
-    include-all-proxies: true
-    filter: '(?i)\[Landing\]'
-    exclude-filter: '(?i)(日本|JP|Japan|Tokyo|Osaka|美国|US|United States|America|香港|HK|Hong Kong|台湾|TW|Taiwan)'
-    url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 100
-    dialer-proxy: 🚄 中转线路选择
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
+    proxies:
+      - 极速香港
+      - 极速全球
 
 # ==========================================
 # 规则提供者
@@ -612,14 +605,14 @@ rules:
   - "RULE-SET,TalkToneNoAds,广告拦截"  
   - "RULE-SET,Google,谷歌"
   - "RULE-SET,GoogleFCM,谷歌"
+  - "RULE-SET,OpenAI,OpenAI"
+  - "RULE-SET,Copilot,OpenAI"   
+  - "RULE-SET,BardAI,OpenAI"  
+  - "RULE-SET,Claude,美国节点"  
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
   - "RULE-SET,Telegram,电报消息"
-  - "RULE-SET,OpenAI,OpenAI"
-  - "RULE-SET,Copilot,OpenAI"   
-  - "RULE-SET,BardAI,OpenAI"  
-  - "RULE-SET,Claude,美国节点"
   - "RULE-SET,TalkTone,美国节点"
   - "RULE-SET,Check,节点选择"
   - "RULE-SET,Epic,游戏平台"
@@ -628,7 +621,7 @@ rules:
   - "RULE-SET,Steam,游戏平台"
   - "RULE-SET,Nintendo,游戏平台"
   - "RULE-SET,YouTube,油管视频"
-  - "RULE-SET,YouTubeMusic,节点选择"  
+  - "RULE-SET,YouTubeMusic,油管视频"  
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BiliBiliIntl,哔哩哔哩"
