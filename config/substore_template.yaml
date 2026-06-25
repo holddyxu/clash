@@ -10,34 +10,50 @@ mixed-port: 7890
 allow-lan: true
 mode: rule
 log-level: info
-ipv6: true
+ipv6: false
 external-controller: 0.0.0.0:9090
 # secret: "your-secret-here"
 
-# DNS 设置（可选，根据你的需求调整）
+# TUN 设置（虚拟网卡模式，全局模式需要）
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-redirect: false
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+  mtu: 1500
+
+# DNS 设置（TUN + 全局模式专用配置）
 dns:
   enable: true
-  ipv6: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - localhost.ptlogin2.qq.com
+  ipv6: false
+  enhanced-mode: redir-host
   default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
   nameserver:
     - 'https://doh.pub/dns-query'
     - 'https://dns.alidns.com/dns-query'
+  direct-nameserver:
+    - 'https://doh.pub/dns-query'
+    - 'https://dns.alidns.com/dns-query'
+    - 223.5.5.5
   fallback:
     - 'https://1.1.1.1/dns-query'
     - 'https://dns.google/dns-query'
   fallback-filter:
     geoip: true
     geoip-code: CN
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
   proxy-server-nameserver:
     - 'https://doh.pub/dns-query'
     - 'https://dns.alidns.com/dns-query'
+  respect-rules: true
 
 # ==========================================
 # proxies: 将由 Sub-Store 自动填充
@@ -50,7 +66,7 @@ proxy-groups:
   # ====================
   # 线路节点池（直连中转，非链式）
   # ====================
-  
+
   # 日本线路 - 自动选择
   - name: 🇯🇵 日本线路-自动
     type: url-test
@@ -79,7 +95,7 @@ proxy-groups:
   # ====================
   # 地区落地组（链式节点，已由 Sub-Store 处理好）
   # ====================
-  
+
   # 日本落地链式节点 + 日本线路
   - name: 极速日本
     type: select
@@ -128,7 +144,7 @@ proxy-groups:
   # ====================
   # 第三层：业务策略组
   # ====================
-  
+
   - name: 节点选择
     type: select
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
@@ -329,17 +345,17 @@ proxy-groups:
 # ==========================================
 rule-providers:
   Advertising:
-   url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_No_Resolve.yaml
-   path: ./ruleset/Advertising_No_Resolve.yaml
-   behavior: classical
-   interval: 86400
-   type: http
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_No_Resolve.yaml
+    path: ./ruleset/Advertising_No_Resolve.yaml
+    behavior: classical
+    interval: 86400
+    type: http
   AdvertisingDomain:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_Domain.yaml
     path: ./ruleset/Advertising_Domain.yaml
     behavior: domain
     interval: 86400
-    type: http   
+    type: http
 
   Google:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Google/Google_No_Resolve.yaml
@@ -367,7 +383,7 @@ rule-providers:
     path: ./ruleset/Microsoft_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http  
+    type: http
 
   Apple:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Apple/Apple_No_Resolve.yaml
@@ -380,7 +396,7 @@ rule-providers:
     path: ./ruleset/Apple_Domain.yaml
     behavior: domain
     interval: 86400
-    type: http    
+    type: http
 
   Telegram:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Telegram/Telegram_No_Resolve.yaml
@@ -401,21 +417,21 @@ rule-providers:
     path: ./ruleset/Copilot_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http   
+    type: http
 
   Claude:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Claude/Claude_No_Resolve.yaml
     path: ./ruleset/Claude_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http  
+    type: http
 
   BardAI:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/BardAI/BardAI_No_Resolve.yaml
     path: ./ruleset/BardAI_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http  
+    type: http
 
   Epic:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Epic/Epic_No_Resolve.yaml
@@ -528,50 +544,49 @@ rule-providers:
     path: ./ruleset/JAV.yaml
     behavior: classical
     interval: 86400
-    type: http  
-    
+    type: http
 
   ImgHostAbroad:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ImgHostAbroad/ImgHostAbroad.yaml
-    path: ./ruleset/ImgHostAbroad.yaml 
+    path: ./ruleset/ImgHostAbroad.yaml
     behavior: classical
     interval: 86400
-    type: http   
-  
+    type: http
+
   Developer:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Developer/Developer_No_Resolve.yaml
     path: ./ruleset/Developer_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http    
-    
+    type: http
+
   GitHub:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GitHub/GitHub_No_Resolve.yaml
     path: ./ruleset/GitHub_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http 
-    
+    type: http
+
   YouTubeMusic:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/YouTubeMusic/YouTubeMusic_No_Resolve.yaml
     path: ./ruleset/YouTubeMusic_No_Resolve.yaml
     behavior: classical
     interval: 86400
-    type: http   
+    type: http
 
   GoogleFCM:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/GoogleFCM/GoogleFCM_No_Resolve.yaml
     path: ./ruleset/GoogleFCM.yaml
     behavior: classical
     interval: 86400
-    type: http 
+    type: http
 
   TalkTone:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkTone/TalkTone_No_Resolve.yaml
     path: ./ruleset/TalkTone.yaml
     behavior: classical
     interval: 86400
-    type: http 
+    type: http
 
   TalkToneNoAds:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/TalkToneNoAds/TalkToneNoAds_No_Resolve.yaml
@@ -592,36 +607,36 @@ rule-providers:
     path: ./ruleset/ManualAdjust.yaml
     behavior: classical
     interval: 86400
-    type: http   
-
+    type: http
 
   Nvidia:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nvidia/Nvidia.yaml
     path: ./ruleset/Nvidia.yaml
     behavior: classical
     interval: 86400
-    type: http   
+    type: http
+
 # ==========================================
 # 规则
 # ==========================================
 rules:
   - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ChinaMaxDomain,全球直连"
-  - "RULE-SET,ChinaMax,全球直连"  
+  - "RULE-SET,ChinaMax,全球直连"
   - "RULE-SET,ChinaMaxIP,全球直连"
   - "RULE-SET,Download,全球直连"
   - "RULE-SET,PirateTrackers,全球直连"
-  - "RULE-SET,SteamCN,全球直连"  
+  - "RULE-SET,SteamCN,全球直连"
   - "RULE-SET,AdvertisingDomain,广告拦截"
   - "RULE-SET,Advertising,广告拦截"
   - "RULE-SET,TalkToneNoAds,广告拦截"
-  - "RULE-SET,Nvidia,节点选择"    
+  - "RULE-SET,Nvidia,节点选择"
   - "RULE-SET,Google,谷歌"
   - "RULE-SET,GoogleFCM,谷歌"
   - "RULE-SET,OpenAI,OpenAI"
-  - "RULE-SET,Copilot,OpenAI"   
-  - "RULE-SET,BardAI,OpenAI"  
-  - "RULE-SET,Claude,极速美国"  
+  - "RULE-SET,Copilot,OpenAI"
+  - "RULE-SET,BardAI,OpenAI"
+  - "RULE-SET,Claude,极速美国"
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
   - "RULE-SET,Apple,苹果服务"
@@ -634,12 +649,12 @@ rules:
   - "RULE-SET,Steam,游戏平台"
   - "RULE-SET,Nintendo,游戏平台"
   - "RULE-SET,YouTube,油管视频"
-  - "RULE-SET,YouTubeMusic,油管视频"  
+  - "RULE-SET,YouTubeMusic,油管视频"
   - "RULE-SET,Netflix,奈飞视频"
   - "RULE-SET,Bahamut,巴哈姆特"
   - "RULE-SET,BiliBiliIntl,哔哩哔哩"
   - "RULE-SET,Developer,Developer"
-  - "RULE-SET,GitHub,Developer"  
+  - "RULE-SET,GitHub,Developer"
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,极速日本"
   - "RULE-SET,ManualAdjust,节点选择"
