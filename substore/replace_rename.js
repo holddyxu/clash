@@ -1,4 +1,4 @@
-function operator(proxies = [], targetPlatform, context) {
+﻿function operator(proxies = [], targetPlatform, context) {
   if (!Array.isArray(proxies)) {
     return proxies; // 如果不是数组，直接返回
   }
