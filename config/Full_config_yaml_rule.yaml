@@ -614,12 +614,20 @@ rule-providers:
     behavior: classical
     interval: 86400
     type: http  
+
   ManualAdjust:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/ManualAdjust/ManualAdjust.yaml
     path: ./ruleset/ManualAdjust.yaml
     behavior: classical
     interval: 86400
     type: http   
+
+  Nvidia:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nvidia/Nvidia.yaml
+    path: ./ruleset/Nvidia.yaml
+    behavior: classical
+    interval: 86400
+    type: http
 
 rules:
 
@@ -662,3 +670,4 @@ rules:
   - "RULE-SET,ImgHostAbroad,节点选择"
   - "RULE-SET,JAV,日本节点"
   - "RULE-SET,ManualAdjust,节点选择"
+  - "RULE-SET,Nvidia,节点选择"

@@ -594,6 +594,13 @@ rule-providers:
     interval: 86400
     type: http   
 
+
+  Nvidia:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nvidia/Nvidia.yaml
+    path: ./ruleset/Nvidia.yaml
+    behavior: classical
+    interval: 86400
+    type: http   
 # ==========================================
 # 规则
 # ==========================================
@@ -607,7 +614,8 @@ rules:
   - "RULE-SET,SteamCN,全球直连"  
   - "RULE-SET,AdvertisingDomain,广告拦截"
   - "RULE-SET,Advertising,广告拦截"
-  - "RULE-SET,TalkToneNoAds,广告拦截"  
+  - "RULE-SET,TalkToneNoAds,广告拦截"
+  - "RULE-SET,Nvidia,节点选择"    
   - "RULE-SET,Google,谷歌"
   - "RULE-SET,GoogleFCM,谷歌"
   - "RULE-SET,OpenAI,OpenAI"

@@ -294,6 +294,13 @@ rule-providers:
    behavior: classical
    interval: 86400
    type: http
+
+  Nvidia:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nvidia/Nvidia.yaml
+    path: ./ruleset/Nvidia.yaml
+    behavior: classical
+    interval: 86400
+    type: http  
   AdvertisingDomain:
     url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Advertising/Advertising_Domain.yaml
     path: ./ruleset/Advertising_Domain.yaml
@@ -552,6 +559,13 @@ rule-providers:
     path: ./ruleset/ManualAdjust.yaml
     behavior: classical
     interval: 86400
+    type: http
+
+  Nvidia:
+    url: https://raw.githubusercontent.com/holddyxu/clash/refs/heads/main/list/Nvidia/Nvidia.yaml
+    path: ./ruleset/Nvidia.yaml
+    behavior: classical
+    interval: 86400
     type: http   
 
 # 规则优先级说明：
@@ -570,6 +584,7 @@ rules:
   - "RULE-SET,AdvertisingDomain,广告拦截"
   - "RULE-SET,Advertising,广告拦截"
   - "RULE-SET,TalkToneNoAds,广告拦截"  
+  - "RULE-SET,Nvidia,节点选择"  
   - "RULE-SET,Google,谷歌"
   - "RULE-SET,GoogleFCM,谷歌"
   - "RULE-SET,OneDrive,微软云盘"
